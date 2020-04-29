@@ -64,7 +64,7 @@ Dupont, W.D. and Plummer, W.D.. Power and Sample Size Calculations for Studies I
 Xianjun Dong <XDONG@rics.bwh.harvard.edu>,
 Tzuu-Wang Chang <Chang.Tzuu-Wang@mgh.harvard.edu>,
 Scott T. Weiss <restw@channing.harvard.edu>,
-Weiliang Qiu <stwxq@channing.harvard.edu>
+Weiliang Qiu <weiliang.qiu@gmail.com>
 }
 %\note{
 %%  ~~further notes~~

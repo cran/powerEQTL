@@ -5,7 +5,10 @@ export(
   minSlopeEQTL.SLR,
   powerEQTL.ANOVA,
   powerEQTL.ANOVA2,
+  powerEQTL.scRNAseq,
   powerEQTL.SLR,
+  powerLME,
+  powerLMEnoCov,
   ssEQTL.ANOVA,
   ssEQTL.ANOVA2,
   ssEQTL.SLR
@@ -21,4 +24,9 @@ importFrom(stats,
            pf,
            optim
           )
+
+importFrom("stats", "pnorm", "qnorm")
+
 importFrom("stats", "uniroot")
+
+importFrom("stats", "optimize")

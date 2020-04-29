@@ -81,7 +81,7 @@ Lonsdale J and Thomas J, et al. The Genotype-Tissue Expression (GTEx) project. N
 Xianjun Dong <XDONG@rics.bwh.harvard.edu>,
 Tzuu-Wang Chang <Chang.Tzuu-Wang@mgh.harvard.edu>,
 Scott T. Weiss <restw@channing.harvard.edu>,
-Weiliang Qiu <stwxq@channing.harvard.edu>
+Weiliang Qiu <weiliang.qiu@gmail.com>
 }
 %\note{
 %%  ~~further notes~~

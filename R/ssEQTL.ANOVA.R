@@ -23,7 +23,7 @@ diffPowerFunc.ANOVA=function(myntotal,
                               myntotal=myntotal,
                               mystddev=mystddev,
                               deltaVec=deltaVec, verbose=FALSE)
-  diff=(estPower-desiredPower)^2
+  diff=(estPower-desiredPower)
   return(diff)
 
 }
@@ -43,13 +43,15 @@ ssEQTL.ANOVA=function(MAF,
                    mystddev=0.13,
                    deltaVec=c(0.13,0.13))
 {
-  res.optim=optim(par=200, fn=diffPowerFunc.ANOVA,typeI=typeI,
-                  nTests=nTests, mystddev=mystddev,
-                  deltaVec=deltaVec, desiredPower=mypower,
-        method = c("L-BFGS-B"),
-        lower = 1, upper = 1000000)
-  myntotal=res.optim$par
 
+  res.root=uniroot(f=diffPowerFunc.ANOVA,
+                    lower = 4, upper = 1000000,
+                  MAF = MAF,
+                  typeI=typeI,
+                  nTests=nTests, mystddev=mystddev,
+                  deltaVec=deltaVec, desiredPower=mypower
+                  )
+  myntotal=res.root$root
   return(myntotal)
 }
 
@@ -69,7 +71,7 @@ diffPowerFunc.ANOVA3=function(
                             nTests=nTests,
                             myntotal=myntotal,
                             verbose=FALSE)
-  diff=(estPower-desiredPower)^2
+  diff=(estPower-desiredPower)
   return(diff)
   
 }
@@ -83,15 +85,15 @@ ssEQTL.ANOVA2=function(
   mypower=0.8
 )
 {
-  res.optim=optim(par=200, fn=diffPowerFunc.ANOVA3,
-                  MAF=MAF,
-                  typeI=typeI,
-                  nTests=nTests, 
-                  effsize=effsize,
-                  desiredPower=mypower,
-                  method = c("L-BFGS-B"),
-                  lower = 1, upper = 1000000)
-  myntotal=res.optim$par
+
+  res.root=uniroot(f=diffPowerFunc.ANOVA3,
+                   lower = 4, upper = 1000000,
+                   MAF = MAF,
+                   typeI=typeI,
+                   nTests=nTests, effsize=effsize,
+                   desiredPower=mypower
+  )
+  myntotal=res.root$root
   
   return(myntotal)
 }
