@@ -1,65 +1,64 @@
+# modified on June 21, 2020
+#  (1) use exact power calculation formula
+#
 # created on Jan. 15, 2017
 #  (1) minimum MAF calculation for eQTL analysis based on simple linear regression
 #
 
 
+# MAF - minor allele frequency
+# FWER - family-wise type I error rate
+# nTests - number of tests
+# n - total number of subjects
+# power - desired power
+# sigma.y - standard deviation of the outcome
 
-diffPowerFunc.SLR=function(MAF,
-                           slope,   
-                           myntotal,
-                           mystddev=0.13,
-                              typeI=0.05,
-                              nTests=200000,
-                              desiredPower=0.8)
+
+diffPower4MAF.SLR=function(MAF,
+                             slope,
+                             n,
+                             power = 0.8,
+                             sigma.y=0.13,
+                             FWER=0.05,
+                             nTests=200000)
 {
-  estPower=powerEQTL.SLR(MAF=MAF,
-                            typeI=typeI,
-                            nTests=nTests,
-                            slope = slope,
-                            myntotal=myntotal,
-                            mystddev=mystddev,
-                            verbose=FALSE)
-  diff=(estPower-desiredPower)
+  power.est = powerEQTL.SLR.default(MAF = MAF,
+                            slope=slope,
+                            n=n,
+                            sigma.y=sigma.y,
+                            FWER=FWER,
+                            nTests=nTests)
+  diff=power.est-power
   return(diff)
-  
 }
 
 
-
-
-# slope - slope of the simple linear regression
-# typeI - type I error rate
-# nTests - number of tests
-# myntotal - total number of subjects
-# mypower - desired power
-# mystddev - standard deviation of gene expression levels
-#            (assume each group of subjects has the same mystddev)
-# verbose - flag indicating if intermedaite results should be output
 minMAFeQTL.SLR=function(slope,
-                   typeI=0.05,
-                   nTests=200000,
-                   myntotal=200,
-                   mypower=0.8,
-                   mystddev=0.13,
-                   verbose=TRUE)
+                   n=200,
+                   power=0.8,
+                   sigma.y=0.13,
+                   FWER=0.05,
+                   nTests=200000)
 {
-
-  res.uniroot=uniroot(f=diffPowerFunc.SLR,
-    interval=c(0.000001, 0.5),
-    slope=slope,   
-    myntotal=myntotal,
-    mystddev=mystddev,
-    typeI=typeI,
-    nTests=nTests,
-    desiredPower=mypower)
-                        
-  if(verbose)
+  a = 1/4 - sigma.y^2/(2*slope^2)
+  if(a > 0)
   {
-    cat("Results of uniroot>>>\n")
-    print(res.uniroot)
+    upp.MAF = 0.5 - sqrt(1/4 - sigma.y^2/(2*slope^2))
+  } else {
+    upp.MAF = 0.5
   }
-  MAF=res.uniroot$root
+  upp.MAF = upp.MAF - (1.0e-6)
   
-  return(MAF)
+  res.root=uniroot(f=diffPower4MAF.SLR,
+    interval=c(0.000001, upp.MAF - 1.0e-6),
+    slope=slope,   
+    n=n,
+    sigma.y=sigma.y,
+    FWER=FWER,
+    nTests=nTests,
+    power=power)
+                        
+  
+  return(res.root$root)
 }
 

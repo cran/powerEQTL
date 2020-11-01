@@ -1,40 +1,71 @@
+# modified on June 21, 2020
+#  (1) use exact power calculation formula
+#
 # created on Dec. 8, 2016
 #  (1) sample size calculation for eQTL analysis based on simple linear regression
 #
 
 # MAF - minor allele frequency
-# typeI - type I error rate
+# FWER - family-wise type I error rate
 # nTests - number of tests
-# myntotal - total number of subjects
-# mypower - desired power
-# mystddev - standard deviation of gene expression levels
-#            (assume each group of subjects has the same mystddev)
+# n - total number of subjects
+# power - desired power
+# sigma.y - standard deviation of the outcome
+#            
 # n.lower - lower bound for sample size
 # n.upper - upper bound for sample size
 # verbose - flag indicating if intermedaite results should be output
-ssEQTL.SLR=function(MAF,
-                       typeI=0.05,
-                       nTests=200000,
-                       slope=0.13,
-                       mypower=0.8,
-                       mystddev=0.13,
-                       n.lower = 2.01,
-                       n.upper = 1e+30,
-                       verbose=TRUE)
+
+diffPower4ss.SLR=function(n,
+                          MAF,
+                          slope,   
+                          sigma.y=0.13,
+                          FWER=0.05,
+                          nTests=200000,
+                          power=0.8)
 {
-
-  sigma.x=sqrt(2*MAF*(1-MAF))
-  alpha = typeI/nTests
-
-  aa=ss.SLR(power=mypower,
-               lambda.a=slope,
-               sigma.x=sigma.x,
-               sigma.y=mystddev,
-               n.lower = n.lower,
-               n.upper = n.upper,
-               alpha = alpha,
-               verbose = verbose)
-  return(aa$n)
-
+  power.est = powerEQTL.SLR.default(MAF = MAF,
+                                     slope=slope,
+                                     n=n,
+                                     sigma.y=sigma.y,
+                                     FWER=FWER,
+                                     nTests=nTests)
+  diff=power.est-power
+  return(diff)
+  
 }
+
+
+ssEQTL.SLR=function(MAF,
+                       slope=0.13,
+                       power=0.8,
+                       sigma.y=0.13,
+                       FWER=0.05,
+                       nTests=200000,
+                       n.lower = 2.01,
+                       n.upper = 1e+30
+                       )
+{
+  sigma2.x = 2*MAF*(1-MAF)
+  
+  delta = slope
+  bound = sigma.y/sqrt(sigma2.x)
+  
+  if(delta >= bound || delta <= - bound)
+  {
+    stop("slope must be in the interval (-a, a), where a = sigma.y/sqrt(2MAF(1-MAF))!\n")
+  }
+  
+  res.uni=uniroot(f=diffPower4ss.SLR,
+                  interval = c(n.lower, n.upper),
+                  MAF = MAF,
+                  slope = slope,   
+                  sigma.y=sigma.y,
+                  FWER=FWER,
+                  nTests=nTests,
+                  power=power
+                  )
+  return(res.uni$root)
+}
+
 

@@ -1,4 +1,38 @@
-# v0.1.6 created on Apr. 29, 2020
+# v0.2.2 created on Nov. 1, 2020
+#  (1) rebuild .tar.gz
+
+# v0.2.1 created on July 25, 2020
+#  (1) update author list for manuscript
+#  (2) use sigma, instead of sigma.epsilon, to represent standard deviation of random error
+#
+# v0.2.0 created on June 27, 2020
+#  (1) for SLR method, use beta_0 and beta_1 to replace gamma and lambda
+#  (2) use lambda to denote non-centrality parameter
+#  (3) set upper bound of MAF as 0.5 - 1e-6
+#  (4) when calculating MAF in powerEQTL.SLR, we need to satisfy
+#      MAF < 0.5 - sqrt(a) if a > 0
+#    where a = 1/4 - sigma.y^2/(2*delta^2)
+#  (5) also require -b < slope < b, where b = sigma.y/sqrt(2*MAF*(1-MAF))
+#    when calculate power based on SLR
+
+# v0.1.9 created on June 22, 2020
+#  (1) created functions 'ssEQTL.scRNAseq', 'minSlopeEQTL.scRNAseq',
+#      'minMAFeQTL.scRNAseq'
+#  (2) rename 'alpha' in powerEQTL.scRNAseq' by 'FWER'
+#  (3) rename 'theta' in powerEQTL.scRNAseq' by 'MAF'
+
+#
+# v0.1.8 created on June 21, 2020
+#  (1) use exact power calculation formula in 'powerEQTL.SLR'
+#  (2) remove the dependency with powerMediation
+#  (3) remove functions related to 'powerEQTL.ANOVA2'
+#  (4) write wrapper functions so that we can calculate
+#      power, sample size, effect size, or MAF using one function
+#  (5) for powerEQTL.SLR related functions, use 'sigma.y' as input
+#      instead of 'sigma'
+#  (6) polish R code
+#
+# v0.1.7 created on Apr. 29, 2020
 #  (1) changed weiliang's email at Author@R to 'weiliang.qiu@gmail.com'
 #
 # v0.1.6 created on Apr. 28, 2020
