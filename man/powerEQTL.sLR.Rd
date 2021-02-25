@@ -41,7 +41,7 @@ numeric. Standard deviation of the outcome \eqn{y_i} in simple linear regression
 numeric. Family-wise Type I error rate.
 }
   \item{nTests}{
-integer. Number of tests in eQTL analysis.
+integer. Number of tests (i.e., number of all (SNP, gene) pairs) in eQTL analysis.
 } 
   \item{n.lower}{
 numeric. Lower bound of the sample size. Only used when calculating sample size.
@@ -58,7 +58,7 @@ where \eqn{y_i}{y_i} is the gene expression level of the \eqn{i}{i}-th subject,
 \eqn{x_i=0} indicates wildtype homozygotes;
 \eqn{x_i=1} indicates heterozygotes; and \eqn{x_i=2} indicates mutation heterozygotes.
 
-To test if the SNP is associated with the gene probe, we test the null hypothesis \eqn{H_0: \beta_1=0}{H_0: beta_1 = 0} versus the alternative hypotehsis \eqn{H_1: \beta_1 = \delta}, where \eqn{\delta\neq 0}.
+To test if the SNP is associated with the gene probe, we test the null hypothesis \eqn{H_0: \beta_1=0}{H_0: beta_1 = 0} versus the alternative hypothesis \eqn{H_1: \beta_1 = \delta}, where \eqn{\delta\neq 0}.
 
 
 Denote \eqn{\theta}{theta} as the minor allele frequency (MAF) of the SNP. Under Hardy-Weinberg equilibrium, we can calculate the variance of genotype of the SNP: 
@@ -105,6 +105,7 @@ manuscript. (2020)
 }
 \author{
 Xianjun Dong <XDONG@rics.bwh.harvard.edu>,
+Xiaoqi Li<xli85@bwh.harvard.edu>,
 Tzuu-Wang Chang <Chang.Tzuu-Wang@mgh.harvard.edu>,
 Scott T. Weiss <restw@channing.harvard.edu>,
 Weiliang Qiu <weiliang.qiu@gmail.com>

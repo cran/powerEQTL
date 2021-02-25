@@ -24,7 +24,7 @@ numeric. Minor allele frequency.
 }
   \item{deltaVec}{
 numeric. A vector having 2 elements. The first element is equal to
-\eqn{\mu_2-\mu_1}{mu_2 - mu_1} and the second elementis equalt to
+\eqn{\mu_2-\mu_1}{mu_2 - mu_1} and the second element is equal to
 \eqn{\mu_3-\mu_2}{mu_3 - mu_2}, where \eqn{\mu_1}{mu_1} is
 the mean gene expression level for the mutation homozygotes,
 \eqn{\mu_2}{mu_2} is the mean gene expression level for the heterozygotes,
@@ -45,7 +45,7 @@ numeric. Standard deviation of the random error.
 numeric. Family-wise Type I error rate.
 }
   \item{nTests}{
-integer. Number of tests in eQTL analysis.
+integer. Number of tests (i.e., number of all (SNP, gene) pairs) in eQTL analysis.
 }
   \item{n.lower}{
 numeric. Lower bound of the sample size. Only used when calculating sample size.
@@ -116,6 +116,7 @@ manuscript. (2020)
 }
 \author{
 Xianjun Dong <XDONG@rics.bwh.harvard.edu>,
+Xiaoqi Li<xli85@bwh.harvard.edu>,
 Tzuu-Wang Chang <Chang.Tzuu-Wang@mgh.harvard.edu>,
 Scott T. Weiss <restw@channing.harvard.edu>,
 Weiliang Qiu <weiliang.qiu@gmail.com>

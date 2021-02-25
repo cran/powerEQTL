@@ -47,7 +47,7 @@ numeric. Intra-class correlation (i.e., correlation between
 numeric. Family-wise Type I error rate. 
 }
   \item{nTests}{
-integer. Number of tests.
+integer. Number of tests (e.g., number of genes in differential expression analysis based on scRNAseq to compare gene expression before and after treatment).
 }
   \item{n.lower}{
 numeric. Lower bound of the sample size. Only used when calculating sample size.
@@ -114,6 +114,9 @@ manuscript. (2020)
 }
 \author{
 Xianjun Dong <XDONG@rics.bwh.harvard.edu>,
+Xiaoqi Li<xli85@bwh.harvard.edu>,
+Tzuu-Wang Chang <Chang.Tzuu-Wang@mgh.harvard.edu>,
+Scott T. Weiss <restw@channing.harvard.edu>,
 Weiliang Qiu <weiliang.qiu@gmail.com>
 }
 %\note{

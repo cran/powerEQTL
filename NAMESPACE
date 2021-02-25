@@ -1,9 +1,11 @@
 export(
   powerEQTL.ANOVA,
   powerEQTL.scRNAseq,
+  powerEQTL.scRNAseq.sim,
   powerEQTL.SLR,
   powerLME,
-  powerLMEnoCov
+  powerLMEnoCov,
+  simDat.eQTL.scRNAseq
 )
 
 
@@ -15,8 +17,18 @@ importFrom(stats,
 
 importFrom("stats", "pt", "qt")
 
-importFrom("stats", "pnorm", "qnorm")
+importFrom("stats", "pnorm", "qnorm", "rnorm", "rnbinom", "rbinom")
 
 importFrom("stats", "uniroot")
 
 importFrom("stats", "optimize")
+
+importFrom("stats", "quantile")
+
+importFrom("GLMMadaptive", "mixed_model", "zi.negative.binomial")
+importFrom("glmmTMB", "glmmTMB", "nbinom2")
+importFrom("parallel", "mclapply")
+
+
+importFrom("nlme", "corCompSymm")
+

@@ -51,7 +51,7 @@ numeric. Intra-class correlation (i.e., correlation between
 numeric. Family-wise Type I error rate. 
 }
   \item{nTests}{
-integer. Number of tests.
+integer. Number of tests (e.g., number of genes in differential expression analysis based on scRNAseq to compare gene expression between diseased subjects and healthy subjects).
 }
   \item{n.lower}{
 numeric. Lower bound of the sample size. Only used when calculating sample size.
@@ -72,7 +72,7 @@ and
 subjects, \eqn{m} is the number of observations per subject,
 \eqn{y_{ij}} is the outcome value for the \eqn{j}-th observation
 of the \eqn{i}-th subject, \eqn{x_i} is the predictor value for the
-\eqn{i}-th subject. 
+\eqn{i}-th subject. For example, \eqn{x_i} is the binary variable indicating if the \eqn{i}-th subject is a diseased subject or not.
 
 We would like to test the following hypotheses:
 \deqn{H_0: \beta_1=0,}
@@ -113,6 +113,9 @@ manuscript. (2020)
 }
 \author{
 Xianjun Dong <XDONG@rics.bwh.harvard.edu>,
+Xiaoqi Li<xli85@bwh.harvard.edu>,
+Tzuu-Wang Chang <Chang.Tzuu-Wang@mgh.harvard.edu>,
+Scott T. Weiss <restw@channing.harvard.edu>,
 Weiliang Qiu <weiliang.qiu@gmail.com>
 }
 %\note{

@@ -1,3 +1,25 @@
+# v0.2.7 created on Feb. 24, 2021
+#  (1) rebuilt after Rshiny app testing
+#
+# v0.2.6 created on Feb. 14, 2021
+#  (1) rename 'nSubj' back to 'n' and 'nCellPerSubj' back to 'm' to be consistent with other R functions in this package
+#  (2) use asymptotic distribution of test statistics to calculate power to get stable results and to improve speed. 
+#  (3) added Xiaoqi Li<xli85@bwh.harvard.edu> as author of the R package 'powerEQTL'
+#  (4) rename 'int' to 'm.int'
+#  (5) give more details about 'nTests'
+#  
+# v0.2.5 created on Feb. 14, 2021
+#   (1) use cutoff based-on null hypothesis to calculate power
+#       since p-value returned by GLMMadaptive or glmmTMB is asymptotic p-value which requires large sample size
+#   (2) add functions to estimate slope, n, MAF for simulation-based power calculation   
+#
+# v0.2.4 created on Feb. 10, 2021
+#   (1) NBZIMM not in CRAN yet. temporarily remove NBZIMM
+#
+# v0.2.3 created on Feb. 8, 2021
+#  (1) add function 'simDat.eQTL.scRNAseq' (simulate gene expression for a gene and genotype for a SNP for a scRNAseq analysis)
+#  (2) add function 'powerEQTL.scRNAseq.sim' (calculate power for eQTL via scRNAseq data by using simulation approach)
+#
 # v0.2.2 created on Nov. 1, 2020
 #  (1) rebuild .tar.gz
 
