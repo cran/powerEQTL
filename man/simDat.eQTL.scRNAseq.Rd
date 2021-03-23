@@ -20,7 +20,7 @@ simDat.eQTL.scRNAseq(nSubj = 50,
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{nSubj}{
-	  integer. Number of subjects.
+	  integer. Total number of subjects.
 }
   \item{nCellPerSubj}{
 	  integer. Number of cells per subject.

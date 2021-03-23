@@ -29,7 +29,7 @@ numeric. Minor allele frequency.
 numeric. Slope of the simple linear regression.
 }
   \item{n}{
-integer. Number of subjects.
+integer. Total number of subjects.
 }
   \item{power}{
 numeric. Power for testing if the slope is equal to zero.
@@ -44,9 +44,9 @@ numeric. Family-wise Type I error rate.
 integer. Number of tests (i.e., number of all (SNP, gene) pairs) in eQTL analysis.
 } 
   \item{n.lower}{
-numeric. Lower bound of the sample size. Only used when calculating sample size.
+numeric. Lower bound of the total number of subjects. Only used when calculating total number of subjects.
 } \item{n.upper}{
-numeric. Upper bound of the sample size. Only used when calculating sample size.
+numeric. Upper bound of the total number of subjects. Only used when calculating total number of subjects.
 }
 }
 \details{
@@ -83,11 +83,18 @@ Hence, the non-centrality parameter can be rewritten as
 \left(\sigma_y^2 - \delta^2 2\left(1-\hat{\theta}\right)\hat{\theta}\right)/
 \left[(n-1)2\left(1-\hat{\theta}\right)\hat{\theta}\right]
 }}}
+
+
+
+We adopted the parameters from the GTEx cohort (see the Power analysis" section of Nature Genetics, 2013; https://www.nature.com/articles/ng.2653), where they modeled the expression data as having a log-normal distribution with a log standard deviation of 0.13 within each genotype class (AA, AB, BB). This level of noise is based on estimates from initial GTEx data. In their power analysis, they assumed the across-genotype difference delta = 0.13 (i.e., equivalent to detecting a log expression change similar to the standard deviation within a single genotype class). 
+
+
+
 }
 \value{
 power if the input parameter \code{power = NULL}.
 
-sample size if the input parameter \code{n = NULL};
+sample size (total number of subjects) if the input parameter \code{n = NULL};
 
 minimum detectable slope if the input parameter \code{slope = NULL};
 
@@ -129,7 +136,7 @@ powerEQTL.SLR(
   FWER = 0.05,
   nTests = 2e+05)
   
-# calculate sample size
+# calculate sample size (total number of subjects)
 powerEQTL.SLR(
   MAF = 0.1,
   slope = 0.13,

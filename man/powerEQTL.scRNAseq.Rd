@@ -28,7 +28,7 @@ powerEQTL.scRNAseq(
 numeric. Slope under alternative hypothesis.
 }
   \item{n}{
-integer. Number of subjects.
+integer. Total number of subjects.
 }
   \item{m}{
 integer. Number of cells per subject.
@@ -53,9 +53,9 @@ numeric. Family-wise Type I error rate for one pair (SNP, gene).
 integer. Number of tests (i.e., number of all (SNP, gene) pairs) in eQTL analysis.
 }
   \item{n.lower}{
-numeric. Lower bound of the sample size. Only used when calculating sample size.
+numeric. Lower bound of the total number of subjects. Only used when calculating total number of subjects.
 } \item{n.upper}{
-numeric. Upper bound of the sample size. Only used when calculating sample size.
+numeric. Upper bound of the total number of subjects. Only used when calculating total number of subjects.
 }
 
 }
@@ -106,7 +106,7 @@ and \eqn{\rho=\sigma^2_{\beta}/\left(\sigma^2_{\beta}+\sigma^2\right)} is the in
 \value{
 power if the input parameter \code{power = NULL}.
 
-sample size if the input parameter \code{n = NULL};
+sample size (total number of subjects) if the input parameter \code{n = NULL};
 
 minimum detectable slope if the input parameter \code{slope = NULL};
 
@@ -150,7 +150,7 @@ Weiliang Qiu <weiliang.qiu@gmail.com>
 
   print(power)
   
-  # calculate sample size
+  # calculate sample size (total number of subjects)
   n = powerEQTL.scRNAseq(
     slope = 0.6, 
     n = NULL, 

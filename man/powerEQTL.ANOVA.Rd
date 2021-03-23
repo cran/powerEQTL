@@ -48,9 +48,9 @@ numeric. Family-wise Type I error rate.
 integer. Number of tests (i.e., number of all (SNP, gene) pairs) in eQTL analysis.
 }
   \item{n.lower}{
-numeric. Lower bound of the sample size. Only used when calculating sample size.
+numeric. Lower bound of the total number of subjects. Only used when calculating total number of subjects.
 } \item{n.upper}{
-numeric. Upper bound of the sample size. Only used when calculating sample size.
+numeric. Upper bound of the total number of subjects. Only used when calculating total number of subjects.
 }
 }
 \details{
@@ -92,11 +92,13 @@ where \eqn{\theta} is MAF.
 Without loss of generality, we set \eqn{\mu_1 = -\delta_1}, \eqn{\mu_2=0},
 and \eqn{\mu_3 = \delta_2}.
 
+We adopted the parameters from the GTEx cohort (see the Power analysis" section of Nature Genetics, 2013; https://www.nature.com/articles/ng.2653), where they modeled the expression data as having a log-normal distribution with a log standard deviation of 0.13 within each genotype class (AA, AB, BB). This level of noise is based on estimates from initial GTEx data. In their power analysis, they assumed the across-genotype difference delta = 0.13 (i.e., equivalent to detecting a log expression change similar to the standard deviation within a single genotype class). 
+
 }
 \value{
 power if the input parameter \code{power = NULL}.
 
-sample size if the input parameter \code{n = NULL};
+sample size (total number of subjects) if the input parameter \code{n = NULL};
 
 minimum detectable slope if the input parameter \code{slope = NULL}.
 }
@@ -138,7 +140,7 @@ powerEQTL.ANOVA(MAF = 0.1,
                 FWER = 0.05,
                 nTests = 200000)
                 
-# calculate sample size
+# calculate sample size (total number of subjects)
 powerEQTL.ANOVA(MAF = 0.1,
                 deltaVec = c(-0.13, 0.13),
                 n = NULL,

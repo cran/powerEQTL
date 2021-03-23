@@ -38,7 +38,7 @@ powerEQTL.scRNAseq.sim(slope,
 	  numeric. Slope (see details).
 }
   \item{n}{
-	  integer. Number of subjects.
+	  integer. Total number of subjects.
 }
   \item{m}{
 	  integer. Number of cells per subject.
@@ -82,9 +82,9 @@ numeric. Family-wise Type I error rate.
 	  integer. Number of computer cores used by \code{mclapply} for parallel computing. For Windows, \code{nCores=1}.
 }
   \item{n.lower}{
-numeric. Lower bound of the sample size. Only used when calculating sample size.
+numeric. Lower bound of the total number of subjects. Only used when calculating total number of subjects.
 } \item{n.upper}{
-numeric. Upper bound of the sample size. Only used when calculating sample size.
+numeric. Upper bound of the total number of subjects. Only used when calculating total number of subjects.
 }
   \item{slope.lower}{
 numeric. Lower bound of the slope. Only used when calculating minimum slope.
@@ -129,7 +129,7 @@ For simplicity, we assume that excess zeros are caused by technical issues, henc
 \value{
 power if the input parameter \code{power = NULL}.
 
-sample size if the input parameter \code{n = NULL};
+sample size (total number of subjects) if the input parameter \code{n = NULL};
 
 minimum detectable slope if the input parameter \code{slope = NULL};
 
@@ -163,7 +163,7 @@ nCellPerSubj = 10
 # calculate power
 power = powerEQTL.scRNAseq.sim(
   slope = 1.62, # slope
-  n = nSubj, # number of subjects
+  n = nSubj, # total number of subjects
   m = nCellPerSubj, # number of cells per subject 
   power = NULL, # power to be estimated
   m.int = -1, # mean of random intercept

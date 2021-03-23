@@ -28,7 +28,7 @@ powerLMEnoCov(
 numeric. Slope under alternative hypothesis.
 }
   \item{n}{
-integer. Number of subjects.
+integer. Total number of subjects.
 }
   \item{m}{
 integer. Number of pairs of replicates per subject.
@@ -50,9 +50,9 @@ numeric. Family-wise Type I error rate.
 integer. Number of tests (e.g., number of genes in differential expression analysis based on scRNAseq to compare gene expression before and after treatment).
 }
   \item{n.lower}{
-numeric. Lower bound of the sample size. Only used when calculating sample size.
+numeric. Lower bound of the total number of subjects. Only used when calculating total number of subjects.
 } \item{n.upper}{
-numeric. Upper bound of the sample size. Only used when calculating sample size.
+numeric. Upper bound of the total number of subjects. Only used when calculating total number of subjects.
 }
 
 }
@@ -103,7 +103,7 @@ and \eqn{\rho=\sigma^2_{\beta}/\left(\sigma^2_{\beta}+\sigma^2\right)} is the in
 \value{
 power if the input parameter \code{power = NULL}.
 
-sample size if the input parameter \code{n = NULL};
+sample size (total number of subjects) if the input parameter \code{n = NULL};
 
 minimum detectable slope if the input parameter \code{slope = NULL}.
 }
@@ -148,7 +148,7 @@ Weiliang Qiu <weiliang.qiu@gmail.com>
 
   print(power)
 
-  # estimate sample size
+  # estimate sample size (total number of subjects)
   n = powerLMEnoCov(
     slope = slope, 
     n = NULL, 

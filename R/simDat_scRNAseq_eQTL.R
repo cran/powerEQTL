@@ -72,4 +72,3 @@ simDat.eQTL.scRNAseq = function(nSubj = 50,
 
 }
 
-

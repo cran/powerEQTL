@@ -1,3 +1,9 @@
+# v0.2.9 created on March 16, 2021
+#  (1) make description of 'n' consistent across package: Total number of subjects
+#
+# v0.2.8 created on March 11, 2021
+#  (1) added info about default parameters for powerEQTL.ANOVA
+#
 # v0.2.7 created on Feb. 24, 2021
 #  (1) rebuilt after Rshiny app testing
 #
