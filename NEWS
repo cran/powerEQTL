@@ -1,3 +1,9 @@
+# v0.3.1 created on May 21, 2021
+#  (1) fixed 2 bugs: (a) package title should be all upper cases for first letter; (b) DOI should be in the format <doi:10.prefix/suffix>.
+#
+# v0.3.0 created on May 20, 2021
+#  (1) updated manuscript publication status
+#
 # v0.2.9 created on March 16, 2021
 #  (1) make description of 'n' consistent across package: Total number of subjects
 #

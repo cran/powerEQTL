@@ -107,9 +107,9 @@ sample size (total number of subjects) if the input parameter \code{n = NULL};
 minimum detectable slope if the input parameter \code{slope = NULL}.
 }
 \references{
-Dong X, Li X, Chang T-W, Weiss ST, and Qiu W. 
-powerEQTL: an R package and R shiny application for calculating sample size and power of bulk tissue and single-cell eQTL analysis.
-manuscript. (2020)
+Dong X, Li X, Chang T-W, Scherzer CR, Weiss ST, and Qiu W. 
+powerEQTL: An R package and shiny application for sample size and power calculation of bulk tissue and single-cell eQTL analysis.
+Bioinformatics, 2021;, btab385
 }
 \author{
 Xianjun Dong <XDONG@rics.bwh.harvard.edu>,

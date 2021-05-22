@@ -75,9 +75,11 @@ For simplicity, we assume that excess zeros are caused by technical issues, henc
 \item{geno }{additive-coded genotype of the SNP}
 \item{counts }{gene expression of the gene}
 }
-%\references{
-%% ~put references to the literature/web site here ~
-%}
+\references{
+Dong X, Li X, Chang T-W, Scherzer CR, Weiss ST, and Qiu W. 
+powerEQTL: An R package and shiny application for sample size and power calculation of bulk tissue and single-cell eQTL analysis.
+Bioinformatics, 2021;, btab385
+}
 \author{
 Xianjun Dong <XDONG@rics.bwh.harvard.edu>,
 Xiaoqi Li<xli85@bwh.harvard.edu>,

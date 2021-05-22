@@ -106,9 +106,9 @@ minimum allowable MAF if the input parameter \code{MAF = NULL}.
   Power and Sample Size Calculations for Studies Involving Linear Regression.
   Controlled Clinical Trials. 1998;19:589-601.
 
-Dong X, Li X, Chang T-W, Weiss ST, and Qiu W. 
-powerEQTL: an R package and R shiny application for calculating sample size and power of bulk tissue and single-cell eQTL analysis.
-manuscript. (2020)
+Dong X, Li X, Chang T-W, Scherzer CR, Weiss ST, and Qiu W. 
+powerEQTL: An R package and shiny application for sample size and power calculation of bulk tissue and single-cell eQTL analysis.
+Bioinformatics, 2021;, btab385
 }
 \author{
 Xianjun Dong <XDONG@rics.bwh.harvard.edu>,
