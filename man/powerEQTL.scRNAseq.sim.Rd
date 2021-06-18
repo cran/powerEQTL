@@ -75,8 +75,7 @@ numeric. Family-wise Type I error rate.
   \item{estMethod}{
 	  character. Indicates which method would be used to fit zero inflated 
 	  negative binomial mixed effects model.
-	  The possible choices are \dQuote{GLMMadaptive}
-	  and \dQuote{glmmTMB}.
+	  Currently, the possible choices are \dQuote{GLMMadaptive} and \dQuote{glmmTMB}.
 }
   \item{nCores}{
 	  integer. Number of computer cores used by \code{mclapply} for parallel computing. For Windows, \code{nCores=1}.

@@ -1,3 +1,10 @@
+# v0.3.3 created on June 17, 2021
+#  (1) drop glmmADMB since it is not in mainstream repositories
+#
+# v0.3.2 created on June 13, 2021
+#  (1) added the value "glmmADMB" for input option "estMethod" in function 'powerEQTL.scRNAseq.sim'
+#  (2) put github URL https://github.com/sterding/powerEQTL back
+#
 # v0.3.1 created on May 21, 2021
 #  (1) fixed 2 bugs: (a) package title should be all upper cases for first letter; (b) DOI should be in the format <doi:10.prefix/suffix>.
 #
