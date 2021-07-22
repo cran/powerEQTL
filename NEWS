@@ -1,3 +1,6 @@
+# v0.3.4 created on June 21, 2021
+#  (1) drop glmmTMB since it is not in CRAN anymore
+#
 # v0.3.3 created on June 17, 2021
 #  (1) drop glmmADMB since it is not in mainstream repositories
 #

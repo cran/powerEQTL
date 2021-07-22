@@ -26,7 +26,6 @@ importFrom("stats", "optimize")
 importFrom("stats", "quantile")
 
 importFrom("GLMMadaptive", "mixed_model", "zi.negative.binomial")
-importFrom("glmmTMB", "glmmTMB", "nbinom2")
 importFrom("parallel", "mclapply")
 
 

@@ -1,3 +1,6 @@
+# modified on July 21, 2021
+#  (1) remove dependency on glmmTMB since it is no longer available in CRAN
+#
 # modified on June 17, 2021
 #  (1) drop glmmADMB since it is not in mainstream repositories
 
@@ -198,46 +201,8 @@ powerEQTL.scRNAseq.sim.default = function(
       return(pval)
 
     }, mc.cores=nCores))
-  } else if(estMethod == "glmmTMB") {
-    pvalVec = unlist(mclapply(1:nSim, function(i) {
-      # simulate data under alternative hypothesis: slope not equal to zero
-      simDati = simDat.eQTL.scRNAseq(nSubj=nSubj,
-                                     nCellPerSubj = nCellPerSubj,
-                                     # probability that an excess zero occurs
-                                     zero.p = zero.p,
-                                     m.int = m.int,
-                                     # standard deviation of the random intercept
-                                     sigma.int = sigma.int,
-                                     # slope for genotype in NB distribution: mu = exp(beta0 + beta1*SNP)
-                                     slope = slope,
-                                     # dispersion parameter of NB distribution
-                                     # the smaller theta is, the larger variance of NB random variable is
-                                     theta  = theta,
-                                     MAF = MAF # SNP MAF
-      )
-      
-      
-      #########################
-      # test if slope is significantly different from zero 
-      res.try = try(f <- glmmTMB::glmmTMB(formula = counts ~ geno + (1|id), 
-                                          data = simDati,
-                                          ziformula = ~ 1, 
-                                          family = nbinom2), silent = TRUE)
-      
-      aa = attr(res.try, which="class")
-      if(aa == "try-error")
-      {
-        pval = NA 
-      } else {
-        pval = summary(f)$coefficients$cond[2, 4]
-      }
-      
-      return(pval)
-      
-    }, mc.cores = nCores))
-    
   } else {
-    stop("Currently available choices for 'estMethod' are GLMMadaptive and glmmTMB!")
+    stop("Currently available choice for 'estMethod' is GLMMadaptive!")
   }
 
   # power
@@ -341,76 +306,8 @@ powerEQTL.scRNAseq.sim.default.exact = function(
       return(res)
 
     }, mc.cores=nCores)
-  } else if(estMethod == "glmmTMB") {
-    res.sim = mclapply(1:nSim, function(i) {
-      # simulate data under alternative hypothesis: slope not equal to zero
-      simDati = simDat.eQTL.scRNAseq(nSubj=nSubj,
-                                     nCellPerSubj = nCellPerSubj,
-                                     # probability that an excess zero occurs
-                                     zero.p = zero.p,
-                                     m.int = m.int,
-                                     # standard deviation of the random intercept
-                                     sigma.int = sigma.int,
-                                     # slope for genotype in NB distribution: mu = exp(beta0 + beta1*SNP)
-                                     slope = slope,
-                                     # dispersion parameter of NB distribution
-                                     # the smaller theta is, the larger variance of NB random variable is
-                                     theta  = theta,
-                                     MAF = MAF # SNP MAF
-      )
-      
-      # simulate data under null hypothesis: slope = 0
-      simDat0 = simDat.eQTL.scRNAseq(nSubj=nSubj,
-                                     nCellPerSubj = nCellPerSubj,
-                                     # probability that an excess zero occurs
-                                     zero.p = zero.p,
-                                     m.int = m.int,
-                                     # standard deviation of the random intercept
-                                     sigma.int = sigma.int,
-                                     # slope for genotype in NB distribution: mu = exp(beta0 + beta1*SNP)
-                                     slope = 0,
-                                     # dispersion parameter of NB distribution
-                                     # the smaller theta is, the larger variance of NB random variable is
-                                     theta  = theta,
-                                     MAF = MAF # SNP MAF
-      )
-      
-      
-      #########################
-      # test if slope is significantly different from zero 
-      res.try = try(f <- glmmTMB::glmmTMB(formula = counts ~ geno + (1|id), 
-                                          data = simDati,
-                                          ziformula = ~ 1, 
-                                          family = nbinom2), silent = TRUE)
-      
-      aa = attr(res.try, which="class")
-      if(aa == "try-error")
-      {
-        stat1 = NA 
-      } else {
-        stat1 = summary(f)$coefficients$cond[2, 3]
-      }
-      
-      res.try0 = try(f0 <- glmmTMB::glmmTMB(formula = counts ~ geno + (1|id), 
-                                            data = simDat0,
-                                            ziformula = ~ 1, 
-                                            family = nbinom2), silent = TRUE)
-      
-      aa0 = attr(res.try0, which="class")
-      if(aa0 == "try-error")
-      {
-        stat0 = NA 
-      } else {
-        stat0 = summary(f0)$coefficients$cond[2, 3]
-      }
-      
-      res = c(stat1, stat0)
-      return(res)
-      
-      
-    }, mc.cores = nCores)
   } else {
-    stop("Currently available choices for 'estMethod' are GLMMadaptive and glmmTMB!")
+    stop("Currently available choice for 'estMethod' is GLMMadaptive!")
   }
   
   mat = t(sapply(res.sim, function(x) {x}))

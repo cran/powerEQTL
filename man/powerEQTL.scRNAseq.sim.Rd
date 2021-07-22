@@ -75,7 +75,7 @@ numeric. Family-wise Type I error rate.
   \item{estMethod}{
 	  character. Indicates which method would be used to fit zero inflated 
 	  negative binomial mixed effects model.
-	  Currently, the possible choices are \dQuote{GLMMadaptive} and \dQuote{glmmTMB}.
+	  Currently, the possible choice is \dQuote{GLMMadaptive}.
 }
   \item{nCores}{
 	  integer. Number of computer cores used by \code{mclapply} for parallel computing. For Windows, \code{nCores=1}.
@@ -149,7 +149,7 @@ Weiliang Qiu <weiliang.qiu@gmail.com>
 }
 \note{
 The speed of simulation approach is slow. It is recommended to run the function \code{powerEQTL.scRNAseq.sim} in parallel computing environment (e.g., Unix/Linux) and set \code{nCores > 1}.
-Also, it is important to set appropriate ranges to search sample size, minimum detectable slope, or minimum allowable MAF. If the function (e.g., glmmTMB) to fit data returns an error message 
+Also, it is important to set appropriate ranges to search sample size, minimum detectable slope, or minimum allowable MAF. If the function (e.g., GLMMadaptive) to fit data returns an error message 
 for a simulated dataset, then the function \code{powerEQTL.scRNAseq.sim} will try a few more runs with different simulated datasets. If all the runs failed, zero (for power estimation) or \code{NA} or \code{NaN} (for estimating slope, sample size, or MAF) would be output.  It is recommended to set \code{nSim >= 1000} to get stable results.
 }
 
