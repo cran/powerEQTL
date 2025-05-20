@@ -1,3 +1,10 @@
+# v0.3.6 created on May 14, 2025
+#  (1) set R (>= 4.3.0)
+#  (2) use ",", instead of "and", to separate URL field
+
+# v0.3.5 created on May 14, 2025
+#  (1) fixed a note in DESCRIPTION file: having both Authors@R and Authors section
+
 # v0.3.4 created on June 21, 2021
 #  (1) drop glmmTMB since it is not in CRAN anymore
 #
